@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+/*get vw*/
+@function setvw($target) {
+	$vw: (768 * 0.01) * 1px;
+	@return ($target / $vw) * 1vw;
+}
+
+/* base valiables */
+$contents_width: 750px;
+$color_main: #000;
+$color_orange : #e89c25;
+$color_green : #405340;
+$color_darkred : #6c362c;
+$bg_white : #fff;
+$bg_black : #000;
+$font_size11 : 11px;
+
+/* font family */
+$font-en: 'Open Sans Condensed', sans-serif;
+
+/* common mixins */
+@mixin clearfix {
+	&:after {
+		content: ".";
+	    display: block;
+	    height: 0;
+	    line-height: 0;
+	    visibility: hidden;
+		clear: both;
+	}
+}
+@mixin width_content{
+	width: 980px;
+	margin:0 auto;
+}
+@mixin border_btn{
+	border: 1px solid #fff;
+	border-radius: 7px;
+	box-shadow: 0px 3px 3px #9c9c9c;
+}
+
+@mixin content{
+	width: 100%;
+	max-width: $contents-width;
+	margin: 0 auto;
+	@media screen and(max-width: 1680px){
+		max-width: $contents-width-lp;
+	}
+}
+@mixin placeholder {
+    ::-webkit-input-placeholder {
+	  color: #b3b3b3;
+	}
+	::-moz-placeholder {
+	  color: #b3b3b3;
+	}
+	:-ms-input-placeholder {
+	  color: #b3b3b3;
+	}
+	:-moz-placeholder {
+	  color: #b3b3b3;
+	}
+}
+
+@mixin hover_btn {
+	opacity: 0.7;
+}
+@mixin display_inlineblock {
+	display: inline-block;
+	vertical-align: middle;
+}
+@mixin after_before{
+	content: "";
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position:  top left;
+}

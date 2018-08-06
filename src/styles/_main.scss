@@ -1,0 +1,192 @@
+.main{
+	max-width: $contents_width;
+	width: 100%;
+	margin: 0 auto;
+	padding: 30px 0;
+    @media only screen and (max-width: 768px) {
+	    max-width: 100%;
+	    width: 95%;
+	    padding: setvw(30px) 0;
+	}
+	.number-pair,.st-cm{
+		font-size: 18px;
+    	color: #9e6c0b;
+		margin-top: 25px;
+		span{
+			font-size:30px;
+			color:#ca1f00;;
+		}
+		@media only screen and (max-width: 768px) {
+		    font-size: setvw(25px);
+		    margin-top: setvw(25px);
+		    span{
+		    	font-size: setvw(35px);
+		    }
+		}
+	}
+	.opct0{
+		opacity:0!important;
+	}
+	#letter{
+		opacity:1;
+	}
+	.head-letter-infor{
+		@include clearfix;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		.load-time{
+			padding: 0 20px;
+			@media only screen and (max-width: 768px) {
+			    padding: 0 setvw(20px);
+			}
+		}
+		.col-w70{
+			width: 70%;
+			float: left;
+		}
+		.col-w30{
+			width: 30%;
+			float: left;
+		}
+		.letter-above{
+			p{
+				cursor: pointer;
+			    color: #ca1f00;
+			    background: #fbe0ad;
+			    padding: 45px 0;
+			    font-size: 50px;
+			    border: 2px solid #d8ab56;
+			    @media only screen and (max-width: 768px) {
+				    padding: setvw(45px) 0;
+				}
+				@media only screen and (max-width: 650px) {
+				    font-size: setvw(50px);
+				}
+			}
+		}
+	}
+	.list-letter{
+		.e_row{
+			@include clearfix;
+			margin: 10px 0;
+			display: block;
+			@media only screen and (max-width: 768px) {
+			    margin: setvw(10px) 0;
+			}
+			.letter{
+				margin:5px 0;
+				padding: 0 5px;
+				width: 20%;
+				float: left;
+				&.done{
+					p{
+						color: #846b3b;
+					}
+				}
+			    p{
+			    	color: #009200;
+				    background: #f7f7d8;
+				    padding: 45px 0;
+				    font-size: 50px;
+				    cursor: pointer;
+				    opacity:1;
+				    &:hover,&:focus{
+			    	    color: #ca1f00;
+	    				background: #fbe0ad;
+				    }
+				    @media only screen and (max-width: 768px) {
+					    padding: setvw(45px) 0;
+					}
+				    @media only screen and (max-width: 650px) {
+					    font-size: setvw(50px);
+					}
+			    }
+			    @media only screen and (max-width: 768px) {
+				    margin: setvw(5px) 0;
+				    padding: 0 setvw(5px);
+				}
+			}
+		}
+	}
+}
+// game2
+.main{
+	.head-letter-inforg2{
+		.box-result{
+			@include clearfix;
+			.w50{
+				width: 50%;
+				float: left;
+			}
+		}
+	}
+	.list-letterg2{
+		.e_row{
+			-webkit-perspective: 800;
+			-moz-perspective: 800;
+    		perspective: 800;
+			position: relative;
+			.letter{
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+  				-webkit-transition: 0.5s;
+  				-moz-transition: 0.5s;
+				-o-transition: 0.5s;
+				transition: 0.5s;
+				&.flipped{
+					-webkit-transform: rotatey(180deg);
+				    -moz-transform: rotatey(180deg);
+				    -o-transform: rotatey(180deg);
+				    -ms-transform: rotatey(180deg);
+				    transform: rotatey(180deg);
+				 	.back{
+				 		// z-index: 3;
+				 	}
+				}
+				.face{
+					-webkit-backface-visibility: hidden;
+					-moz-backface-visibility: hidden;
+				    backface-visibility: hidden;
+				    // -ms-backface-visibility: visible;
+					z-index: 2;
+				}
+				.front{
+					position: absolute;
+					z-index: 1;
+					cursor: pointer;
+					border-radius: 10px;
+					img{
+						max-width: 100%;
+					}
+				}
+				.back{
+					-webkit-transform: rotatey(-180deg);
+					-moz-transform: rotatey(-180deg);
+				    -o-transform: rotatey(-180deg);
+				    -ms-transform: rotatey(-180deg);
+				    transform: rotatey(-180deg);
+					cursor: pointer;
+					border-radius: 10px;
+					z-index: 2;
+				}
+				@media only screen and (max-width: 768px) {
+				    margin: 0;
+				    padding: setvw(7px);
+				}
+				@media only screen and (max-width: 667px) {
+				    padding: setvw(4px) setvw(7px);
+				}
+				@media only screen and (max-width: 568px) {
+				    padding: setvw(8px) setvw(7px);
+				}
+				@media only screen and (max-width: 320px) {
+				    padding: setvw(9px) setvw(7px);
+				}
+			}
+		}
+	}
+}

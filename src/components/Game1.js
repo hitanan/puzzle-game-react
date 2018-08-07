@@ -10,7 +10,7 @@ class Game1 extends Component {
     super(props);
     this.progressBar = React.createRef();
 
-    this.timeTotal = 60;
+    this.timeTotal = 5;
     this.size = 20;
     this.state = {
       randomArray: [],
@@ -39,7 +39,7 @@ class Game1 extends Component {
   checkCurrent() {
     if (this.progressBar.current != null) {
       var barWidth = (this.state.time * this.progressBar.current.clientWidth / this.timeTotal) +'px';
-      console.log(this.progressBar.current);
+      // console.log(this.progressBar.current);
       var el = ReactDOM.findDOMNode(this);
       JQuery(el).find('#progressBar > div').animate({ width: barWidth }, 1000,'linear');
     }
@@ -49,6 +49,9 @@ class Game1 extends Component {
         playing:false,
         again:true
       });
+
+      // Save score.
+      this.props.save && this.props.save(this.state.result);
     }
 
   }
@@ -71,6 +74,12 @@ class Game1 extends Component {
     }, 1000);
   }
 
+  logout() {
+    this.props.logout && this.props.logout();
+  }
+  login() {
+    this.props.login && this.props.login(this.state.result);
+  }
 
   select(item) {
     if (item === this.state.randomItem) {
@@ -113,7 +122,14 @@ class Game1 extends Component {
         </div>
         }
         {this.state && !this.state.playing &&
-         <Popup again={this.state.again} result={this.state.result}  onClick={() => this.reset()} />
+         <Popup 
+            user={this.props.user} 
+            again={this.state.again} 
+            result={this.state.result}  
+            reset={() => this.reset()}
+            login={() => this.login()}
+            logout={() => this.logout()}
+          />
         }
       </div>
     );

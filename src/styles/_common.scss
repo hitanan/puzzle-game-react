@@ -199,7 +199,13 @@ body{
 	    transform: translate(-50%);
 	    @media only screen and (max-width: 768px) {
 		    padding: setvw(20px);
-		}
+			}
+			p.result {
+				position: relative;
+				#show_score {
+					padding-bottom: 15px;
+				}
+			}
 	    p:not(.again) {
 	    	img{
 	    		position: relative;
@@ -240,8 +246,21 @@ body{
 			    border-bottom: 1px solid #7ebe18;
 			    @media only screen and (max-width: 768px) {
 				    font-size: setvw(18px);
-				}
+					}
+					&.action {
+						position: absolute;
+						left: 42%;
+						bottom: 16px;
+    				border-bottom: none;
+					}
 	    	}
-    	}
+			}
+			.user-profile {
+				height: 14vh;
+				position: relative;
+				img {
+					height: 77%;
+				}
+			}
     }
 }

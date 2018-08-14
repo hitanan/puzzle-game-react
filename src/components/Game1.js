@@ -3,7 +3,13 @@ import React, { Component } from 'react';
 import {  getRandomItems, playAudio } from "../Helper.js";
 import JQuery from 'jquery';
 import Popup from './Popup.js';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import * as userActions from '../actions/userActions';
+import {
+  withRouter
+} from 'react-router-dom'
 
 class Game1 extends Component {
   constructor(props) {
@@ -21,6 +27,10 @@ class Game1 extends Component {
       again:false
     };
     this.progInterval = null;
+  }
+
+  componentDidMount(){
+    document.title = "Game 1 - React"
   }
 
   reDraw() {
@@ -50,12 +60,21 @@ class Game1 extends Component {
         again:true
       });
 
-      // Save score.
-      this.props.save && this.props.save(this.state.result);
+      if (!this.props.user) {
+        return;
+      }
+      this.props.saveScore({game: 'game1', score:this.state.result});
     }
 
   }
  
+  close() {
+    this.setState({
+      playing:true,
+    });
+    this.props.history.push('/');
+
+  }
   reset() {
     var randomArray = getRandomItems(this.size);
     var randomIndex = Math.floor(Math.random()*this.size);
@@ -74,12 +93,6 @@ class Game1 extends Component {
     }, 1000);
   }
 
-  logout() {
-    this.props.logout && this.props.logout();
-  }
-  login() {
-    this.props.login && this.props.login(this.state.result);
-  }
 
   select(item) {
     if (item === this.state.randomItem) {
@@ -123,12 +136,11 @@ class Game1 extends Component {
         }
         {this.state && !this.state.playing &&
          <Popup 
-            user={this.props.user} 
+            game="game1"
             again={this.state.again} 
             result={this.state.result}  
             reset={() => this.reset()}
-            login={() => this.login()}
-            logout={() => this.logout()}
+            close={() => this.close()}
           />
         }
       </div>
@@ -136,4 +148,14 @@ class Game1 extends Component {
   }
 }
 
-export default Game1;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+} 
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(userActions, dispatch);
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Game1));

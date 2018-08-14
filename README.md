@@ -7,3 +7,7 @@ puzzle game by react, react-router-dom, firebase, redux
 * Router
 * Firebase authentication and Database
 * Redux,thunk
+
+### How to run:
+npm install
+npm start
